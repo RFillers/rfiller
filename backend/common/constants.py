@@ -16,3 +16,7 @@ EMBEDDER_MODEL_NAME = "text-embedding-3-small"
 
 # OpenAI config
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+
+# Supabase config
+SUPABASE_URL = os.getenv("DATABASE_URL")
+SUPABASE_KEY = os.getenv("SUPABASE_API_KEY")

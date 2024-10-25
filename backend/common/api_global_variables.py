@@ -1,5 +1,6 @@
 from qdrant_client import QdrantClient
-from embedder import Embedder
+from common.embedder import Embedder
+from supabase import Client
 
 
 class ApiGlobalVariables:
@@ -7,6 +8,7 @@ class ApiGlobalVariables:
 
     qdrant_client: QdrantClient
     embedder: Embedder
+    supabase_client: Client
 
 
 api_global_variables = ApiGlobalVariables()
