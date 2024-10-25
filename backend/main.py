@@ -4,7 +4,7 @@ from qdrant_client import QdrantClient
 from contextlib import asynccontextmanager
 from collections.abc import AsyncGenerator
 
-from backend.embedder.embedder import Embedder
+from common.embedder import Embedder
 from common.api_global_variables import api_global_variables
 from common.constants import QDRANT_HOST, QDRANT_PORT
 

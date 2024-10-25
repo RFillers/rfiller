@@ -1,5 +1,5 @@
 from qdrant_client import QdrantClient
-from backend.embedder.embedder import Embedder
+from embedder import Embedder
 
 
 class ApiGlobalVariables:
