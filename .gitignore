@@ -26,3 +26,4 @@ dist-ssr
 venv
 
 qdrant_data
+__pycache__
