@@ -32,7 +32,7 @@ async def lifespan(_: FastAPI) -> AsyncGenerator[None, None]:
 app = FastAPI(lifespan=lifespan)
 
 
-@app.get("/")
+@app.get("/health")
 def read_root():
     return {"message": "Welcome to the FastAPI + Supabase + Qdrant app"}
 
@@ -51,7 +51,7 @@ async def embbed_file(request: Request):
     raise HTTPException(status_code=400, detail="Vector data missing")
 
 
-@app.post("/search/")
+@app.post("/search")
 async def search_vector(request: Request):
     data = await request.json()
     query_vector = data.get("vector")
