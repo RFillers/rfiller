@@ -13,7 +13,7 @@ This is a Vue.js application. Follow the steps below to install dependencies, bu
   node -v
   ```
 
-pnpm: This project uses pnpm for package management. If you don’t have pnpm installed, you can install it via npm:
+- This project uses pnpm for package management. If you don’t have pnpm installed, you can install it via npm:
   ```bash
   npm install -g pnpm
   ```
@@ -25,17 +25,17 @@ pnpm: This project uses pnpm for package management. If you don’t have pnpm in
 
 ## Run frontend application :
 
-To start a local development server, run:
+- To start a local development server, run:
   ```bash
   pnpm run dev
   ```
 
-To build the application for production, use:
+- To build the application for production, use:
   ```bash
   pnpm run build
   ```
 
-You can preview the production build locally using:
+- You can preview the production build locally using:
   ```bash
   pnpm run preview
   ```
