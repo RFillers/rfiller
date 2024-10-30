@@ -1,5 +1,41 @@
-# Vue 3 + TypeScript + Vite
+# Journaly
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+## Overview
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+This is a Vue.js application. Follow the steps below to install dependencies, build, and run the project locally using [pnpm](https://pnpm.io/).
+
+---
+
+## Prerequisites
+
+- **Node.js**: Make sure you have Node.js (v14 or later) installed. You can check your version with:
+  ```bash
+  node -v
+  ```
+
+- This project uses pnpm for package management. If you don’t have pnpm installed, you can install it via npm:
+  ```bash
+  npm install -g pnpm
+  ```
+
+- Install dependencies:
+  ```bash
+  pnpm install
+  ```
+
+## Run frontend application :
+
+- To start a local development server, run:
+  ```bash
+  pnpm run dev
+  ```
+
+- To build the application for production, use:
+  ```bash
+  pnpm run build
+  ```
+
+- You can preview the production build locally using:
+  ```bash
+  pnpm run preview
+  ```
