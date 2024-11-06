@@ -1,12 +1,16 @@
-from fastapi import FastAPI, HTTPException, Request
-from supabase import create_client
+from fastapi import Depends, FastAPI, HTTPException, Request
 from qdrant_client import QdrantClient
 from contextlib import asynccontextmanager
 from collections.abc import AsyncGenerator
 
+from common.dependencies import get_db
 from common.embedder import Embedder
 from common.api_global_variables import api_global_variables
-from common.constants import QDRANT_HOST, QDRANT_PORT, SUPABASE_URL, SUPABASE_KEY
+from common.constants import QDRANT_HOST, QDRANT_PORT
+from database.models import User
+from database.db import engine, Base
+
+from sqlalchemy.orm import Session
 
 
 @asynccontextmanager
@@ -15,14 +19,13 @@ async def lifespan(_: FastAPI) -> AsyncGenerator[None, None]:
 
     FastAPI doc about lifespan events: https://fastapi.tiangolo.com/advanced/events/.
     """
+
+    Base.metadata.create_all(bind=engine)
+
     api_global_variables.qdrant_client = QdrantClient(
         host=QDRANT_HOST, port=QDRANT_PORT
     )
     api_global_variables.embedder = Embedder()
-    if SUPABASE_URL and SUPABASE_KEY:
-        api_global_variables.supabase_client = create_client(SUPABASE_URL, SUPABASE_KEY)
-    else:
-        raise ValueError("Supabase URL or Key missing")
 
     yield
 
@@ -34,7 +37,7 @@ app = FastAPI(lifespan=lifespan)
 
 @app.get("/health")
 def read_root():
-    return {"message": "Welcome to the FastAPI + Supabase + Qdrant app"}
+    return {"message": "Welcome to the FastAPI + PostgreSQL + Qdrant app"}
 
 
 @app.post("/embedding")
@@ -63,13 +66,7 @@ async def search_vector(request: Request):
     raise HTTPException(status_code=400, detail="Query vector missing")
 
 
-@app.get("/message")
-async def get_messages():
-    try:
-        response = (
-            api_global_variables.supabase_client.table("message").select("*").execute()
-        )
-    except Exception:
-        raise HTTPException(status_code=404, detail="Item not found")
-
-    return response.data
+@app.get("/user")
+async def get_users(db: Session = Depends(get_db)):
+    users = db.query(User).all()
+    return users

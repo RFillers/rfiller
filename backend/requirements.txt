@@ -3,6 +3,6 @@ fastapi==0.110.0
 qdrant-client==1.8.0
 python-dotenv
 openai
-asyncpg
 sqlalchemy
-databases
+alembic
+psycopg2-binary

@@ -17,6 +17,8 @@ EMBEDDER_MODEL_NAME = "text-embedding-3-small"
 # OpenAI config
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
-# Supabase config
-SUPABASE_URL = os.getenv("DATABASE_URL")
-SUPABASE_KEY = os.getenv("SUPABASE_API_KEY")
+# Postgre config
+POSTGRES_DB = os.getenv("POSTGRES_DB")
+POSTGRES_USER = os.getenv("POSTGRES_USER")
+POSTGRES_PASSWORD = os.getenv("POSTGRES_PASSWORD")
+POSTGRES_HOST = os.getenv("POSTGRES_HOST")
