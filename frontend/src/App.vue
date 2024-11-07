@@ -4,7 +4,7 @@ import FileUploader from './components/FileUploader.vue'
 
 <template>
   <div>
-    Welcome to Journaly!
+    Welcome to Rfiller!
   </div>
   <FileUploader />
 </template>
