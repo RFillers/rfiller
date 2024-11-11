@@ -1,5 +1,4 @@
 import openai
-
 from common.constants import EMBEDDER_MODEL_NAME, OPENAI_API_KEY
 
 

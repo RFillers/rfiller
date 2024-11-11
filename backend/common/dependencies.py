@@ -1,8 +1,7 @@
-from sqlalchemy.orm import Session
-from database.db import SessionLocal
-
-
 from typing import Generator
+
+from database.db import SessionLocal
+from sqlalchemy.orm import Session
 
 
 def get_db() -> Generator[Session, None, None]:

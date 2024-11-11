@@ -1,13 +1,12 @@
 from common.constants import (
-    POSTGRES_PASSWORD,
-    POSTGRES_USER,
     POSTGRES_DB,
     POSTGRES_HOST,
+    POSTGRES_PASSWORD,
+    POSTGRES_USER,
 )
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
-
+from sqlalchemy.orm import sessionmaker
 
 DATABASE_URL = f"postgresql://{POSTGRES_USER}:{POSTGRES_PASSWORD}@{POSTGRES_HOST}:5432/{POSTGRES_DB}"
 

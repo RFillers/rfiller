@@ -1,16 +1,15 @@
-from fastapi import Depends, FastAPI, HTTPException, Request
-from qdrant_client import QdrantClient
-from contextlib import asynccontextmanager
 from collections.abc import AsyncGenerator
+from contextlib import asynccontextmanager
 
-from common.schemas import DocumentDto
-from common.dependencies import get_db
-from common.embedder import Embedder
 from common.api_global_variables import api_global_variables
 from common.constants import QDRANT_HOST, QDRANT_PORT
+from common.dependencies import get_db
+from common.embedder import Embedder
+from common.schemas import DocumentDto
+from database.db import Base, engine
 from database.models import Document, User
-from database.db import engine, Base
-
+from fastapi import Depends, FastAPI, HTTPException, Request
+from qdrant_client import QdrantClient
 from sqlalchemy.orm import Session
 
 
