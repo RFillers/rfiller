@@ -3,11 +3,12 @@ from qdrant_client import QdrantClient
 from contextlib import asynccontextmanager
 from collections.abc import AsyncGenerator
 
+from common.schemas import DocumentDto
 from common.dependencies import get_db
 from common.embedder import Embedder
 from common.api_global_variables import api_global_variables
 from common.constants import QDRANT_HOST, QDRANT_PORT
-from database.models import User
+from database.models import Document, User
 from database.db import engine, Base
 
 from sqlalchemy.orm import Session
@@ -70,3 +71,14 @@ async def search_vector(request: Request):
 async def get_users(db: Session = Depends(get_db)):
     users = db.query(User).all()
     return users
+
+
+@app.post("/rfp_analysis")
+async def rfp_analysis(document: DocumentDto, db: Session = Depends(get_db)):
+    db_document = Document(**document.model_dump())
+
+    db.add(db_document)
+    db.commit()
+    db.refresh(db_document)
+
+    return db_document

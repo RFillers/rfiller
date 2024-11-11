@@ -10,6 +10,8 @@ class User(Base):
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, index=True)
 
+    documents = relationship("Document", order_by="Document.id", back_populates="user")
+
 
 class Document(Base):
     __tablename__ = "document"
@@ -20,6 +22,3 @@ class Document(Base):
     user_id = Column(Integer, ForeignKey("user.id"))
 
     user = relationship("User", back_populates="documents")
-
-
-User.documents = relationship("Document", order_by=Document.id, back_populates="user")
