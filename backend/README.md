@@ -67,3 +67,12 @@ Upgrade the migration files and the local DB from the migration files
   alembic revision --autogenerate -m "YOUR_COMMIT_MESSAGE"
   alembic upgrade head
 ```
+
+## 5. Push the last docker image
+
+```bash
+  aws ecr get-login-password --region eu-west-3 | docker login --username AWS --password-stdin 767397667909.dkr.ecr.eu-west-3.amazonaws.com
+  docker build -t rfiller:latest .
+  docker tag rfiller:latest 767397667909.dkr.ecr.eu-west-3.amazonaws.com/rfiller:latest
+  docker push 767397667909.dkr.ecr.eu-west-3.amazonaws.com/rfiller:latest
+```
