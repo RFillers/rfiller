@@ -14,4 +14,4 @@ RUN apt-get update && apt-get install -y \
 COPY . .
 
 # Run FastAPI on container startup
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]

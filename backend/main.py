@@ -2,14 +2,12 @@ from collections.abc import AsyncGenerator
 from contextlib import asynccontextmanager
 
 from common.api_global_variables import api_global_variables
-from common.constants import QDRANT_HOST, QDRANT_PORT
 from common.dependencies import get_db
 from common.embedder import Embedder
 from common.schemas import DocumentDto
 from database.db import Base, engine
 from database.models import Document, User
 from fastapi import Depends, FastAPI, HTTPException, Request
-from qdrant_client import QdrantClient
 from sqlalchemy.orm import Session
 
 
@@ -22,14 +20,14 @@ async def lifespan(_: FastAPI) -> AsyncGenerator[None, None]:
 
     Base.metadata.create_all(bind=engine)
 
-    api_global_variables.qdrant_client = QdrantClient(
-        host=QDRANT_HOST, port=QDRANT_PORT
-    )
+    # api_global_variables.qdrant_client = QdrantClient(
+    #     host=QDRANT_HOST, port=QDRANT_PORT
+    # )
     api_global_variables.embedder = Embedder()
 
     yield
 
-    api_global_variables.qdrant_client.close()
+    # api_global_variables.qdrant_client.close()
 
 
 app = FastAPI(lifespan=lifespan)

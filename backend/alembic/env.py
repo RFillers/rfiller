@@ -6,7 +6,7 @@ from sqlalchemy import create_engine
 
 from alembic import context
 
-DATABASE_URL = "postgresql+psycopg2://admin:password@localhost:5432/rfiller_db"
+from common.constants import DATABASE_URL
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
