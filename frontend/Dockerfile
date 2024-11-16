@@ -20,7 +20,7 @@ COPY . .
 RUN pnpm build
 
 # Expose the port your app runs on
-EXPOSE 5173
+EXPOSE 4173
 
 # Start the application
-CMD ["pnpm", "preview", "--host", "0.0.0.0"]
+CMD ["pnpm", "preview"]
